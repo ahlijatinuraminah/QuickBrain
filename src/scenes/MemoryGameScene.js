@@ -29,23 +29,27 @@ export default class MemoryGameScene extends Phaser.Scene
     }
 
 	preload() {
-        this.load.image('bg', 'images/bg.jpg')
+        this.load.image('bg', 'images/bg.png')
         this.load.spritesheet('tilesheet','images/sokoban_tilesheet.png', {
             frameWidth: 64
         })
-        this.load.image('bear', 'images/bear.png')
-		this.load.image('chicken', 'images/chicken.png')
-		this.load.image('duck', 'images/duck.png')
-		this.load.image('parrot', 'images/parrot.png')
-		this.load.image('penguin', 'images/penguin.png')
-		this.load.image('cat', 'images/cat.png')
-		this.load.image('bird', 'images/bird.png')
-		this.load.image('butterfly', 'images/butterfly.png')
+
+		this.load.spritesheet('player','images/player.png', {
+            frameWidth: 96, frameHeight:128
+        })
+        this.load.image('bear', 'images/bomb.png')
+		this.load.image('chicken', 'images/Icon1.png')
+		this.load.image('duck', 'images/Icon2.png')
+		this.load.image('parrot', 'images/Icon3.png')
+		this.load.image('penguin', 'images/Icon4.png')
+		this.load.image('cat', 'images/Icon5.png')
+		this.load.image('bird', 'images/Icon6.png')
+		this.load.image('butterfly', 'images/Icon7.png')
 		this.load.image('play', 'images/play.png')        
     }
 
     create() {
-//        this.add.image(this.halfWidth, 150, 'bg').setScale(3)
+       // this.add.image(this.halfWidth, 150, 'bg').setScale(3)
         this.boxGroup = this.physics.add.staticGroup()
         this.createBoxes()
         this.player = this.createPlayer()
@@ -120,33 +124,33 @@ export default class MemoryGameScene extends Phaser.Scene
 
 		this.anims.create({
 			key: 'standby',
-			frames: [{ key: 'tilesheet', frame: 52 }]
+			frames: [{ key: 'player', frame: 3 }]
 		})
 
 		this.anims.create({
 			key: 'down',
-			frames: this.anims.generateFrameNumbers('tilesheet', { start: 52, end: 54 }),
+			frames: this.anims.generateFrameNumbers('player', { start: 44, end: 44 }),
 			frameRate: 10,
 			repeat: -1
 		})
 
 		this.anims.create({
 			key: 'up',
-			frames: this.anims.generateFrameNumbers('tilesheet', { start: 55, end: 57 }),
+			frames: this.anims.generateFrameNumbers('player', { start: 5, end: 6 }),
 			frameRate: 10,
 			repeat: -1
 		})
 
 		this.anims.create({
 			key: 'left',
-			frames: this.anims.generateFrameNumbers('tilesheet', { start: 81, end: 83 }),
+			frames: this.anims.generateFrameNumbers('player', { start: 10, end: 10 }),
 			frameRate: 10,
 			repeat: -1
 		})
 
 		this.anims.create({
 			key: 'right',
-			frames: this.anims.generateFrameNumbers('tilesheet', { start: 78, end: 80 }),
+			frames: this.anims.generateFrameNumbers('player', { start: 24, end: 26 }),
 			frameRate: 10,
 			repeat: -1
 		})
