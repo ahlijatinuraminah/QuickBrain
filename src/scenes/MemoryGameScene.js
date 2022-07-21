@@ -1,10 +1,10 @@
 import Phaser from 'phaser'
 
 const level = [
-	[1, 3, 6, 2],
-	[5, 4, 0, 3],
-	[2, 0, 1, 7],
-	[6, 4, 7, 5]
+	[4, 2, 6, 3],
+	[7, 0, 1, 5],
+	[3, 1, 4, 6],
+	[0, 5, 7, 2]
 ]
 
 export default class MemoryGameScene extends Phaser.Scene
@@ -34,18 +34,19 @@ export default class MemoryGameScene extends Phaser.Scene
             frameWidth: 64
         })
 
-		this.load.spritesheet('player','images/player.png', {
+		this.load.spritesheet('player','https://i.ibb.co/QNkxQmK/player.png', {
             frameWidth: 96, frameHeight:128
         })
-        this.load.image('bear', 'images/bomb.png')
-		this.load.image('chicken', 'images/Icon1.png')
-		this.load.image('duck', 'images/Icon2.png')
-		this.load.image('parrot', 'images/Icon3.png')
-		this.load.image('penguin', 'images/Icon4.png')
-		this.load.image('cat', 'images/Icon5.png')
-		this.load.image('bird', 'images/Icon6.png')
-		this.load.image('butterfly', 'images/Icon7.png')
-		this.load.image('play', 'images/play.png')        
+        
+		this.load.image('picture1', 'https://i.ibb.co/X7fZVBY/picture1.png')
+	    this.load.image('picture2', 'https://i.ibb.co/xCmS9N9/picture2.png')
+	    this.load.image('picture3', 'https://i.ibb.co/mGfnKnZ/picture3.png')
+	    this.load.image('picture4', 'https://i.ibb.co/Wnr6cZn/picture4.png')
+	    this.load.image('picture5', 'https://i.ibb.co/1Lrs5Wz/picture5.png')
+	    this.load.image('picture6', 'https://i.ibb.co/Kb6sK0B/picture6.png')
+	    this.load.image('picture7', 'https://i.ibb.co/GQmwwxN/picture7.png')
+	    this.load.image('bom', 'https://i.ibb.co/ZT1G5Bp/bom.png')
+				
     }
 
     create() {
@@ -260,42 +261,42 @@ export default class MemoryGameScene extends Phaser.Scene
 		{
 			case 0:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('bear')
+				item.setTexture('bom')
 				break
 
 			case 1:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('chicken')
+				item.setTexture('picture1')
 				break
 
 			case 2:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('duck')
+				item.setTexture('picture2')
 				break
 
 			case 3:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('parrot')
+				item.setTexture('picture3')
 				break
 
 			case 4:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('penguin')
+				item.setTexture('picture4')
 				break
 
 			case 5:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('cat')
+				item.setTexture('picture5')
 				break	
 			
 			case 6:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('bird')
+				item.setTexture('picture6')
 				break	
 
 			case 7:
 				item = this.itemsGroup.get(box.x, box.y)
-				item.setTexture('butterfly')
+				item.setTexture('picture7')
 				break	
 		}
 
@@ -396,13 +397,14 @@ export default class MemoryGameScene extends Phaser.Scene
 		}
 
         ++this.matchesCount
+		console.log(this.matchesCount)
 
         this.time.delayedCall(1000, () => {
 			first.box.setFrame(8)
 			second.box.setFrame(8)
 
-            if (this.matchesCount >= 4)
-			{  alert('win')
+            if (this.matchesCount >= 2)
+			{ 
 				this.player.active = false
 				this.player.setVelocity(0, 0)
 
@@ -412,8 +414,7 @@ export default class MemoryGameScene extends Phaser.Scene
 					fontStyle: 'bold',
 					align : 'center'		
 				}).setOrigin(0.5)
-
-				
+			
 
 				this.countdownTimer = undefined
             }
